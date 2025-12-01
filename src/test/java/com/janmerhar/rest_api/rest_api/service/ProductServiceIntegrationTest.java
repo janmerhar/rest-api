@@ -13,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import com.janmerhar.rest_api.rest_api.dto.CreateProductDto;
 import com.janmerhar.rest_api.rest_api.dto.ProductResponseDto;
 import com.janmerhar.rest_api.rest_api.exception.NotFoundException;
+import com.janmerhar.rest_api.rest_api.repository.PlanRepository;
 import com.janmerhar.rest_api.rest_api.repository.ProductRepository;
 
 @SpringBootTest
@@ -26,8 +27,12 @@ class ProductServiceIntegrationTest {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private PlanRepository planRepository;
+
     @BeforeEach
     void clean() {
+        planRepository.deleteAll();
         productRepository.deleteAll();
     }
 
